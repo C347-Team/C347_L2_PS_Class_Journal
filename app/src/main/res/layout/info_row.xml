@@ -5,34 +5,46 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/textViewHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#68C5EF"
+        android:padding="5dp"
+        android:text="week x"
+        android:textStyle="bold" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageViewGrade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/dg" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textViewDailyGrade"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="DG" />
-
-            <TextView
-                android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="DG"
+                android:textColor="#FFC107"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewGrade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="A"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>
