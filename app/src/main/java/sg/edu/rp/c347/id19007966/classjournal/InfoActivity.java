@@ -45,7 +45,7 @@ public class InfoActivity extends AppCompatActivity {
                 // Intent to display data
                 Intent rpIntent = new Intent(Intent.ACTION_VIEW);
                 // Set the URL to be used.
-                rpIntent.setData(Uri.parse("https://www.rp.edu.sg/soi/full-time-diplomas/details/diploma-in-digital-design-and-development"));
+                rpIntent.setData(Uri.parse(module.getUrl()));
                 startActivity(rpIntent);
             }
         });

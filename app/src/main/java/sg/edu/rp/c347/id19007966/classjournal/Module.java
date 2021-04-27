@@ -11,11 +11,13 @@ public class Module implements Serializable {
     private String module;
     private String module_name;
     private ArrayList<Week> weeks;
+    private String url;
 
-    public Module(String module, String module_name, ArrayList<Week> weeks) {
+    public Module(String module, String module_name, ArrayList<Week> weeks, String url) {
         this.module = module;
         this.module_name = module_name;
         this.weeks = weeks;
+        this.url = url;
     }
     public String getModule() {
         return module;
@@ -26,4 +28,5 @@ public class Module implements Serializable {
     public ArrayList<Week> getWeeks() {
         return weeks;
     }
+    public String getUrl() { return url; }
 }
