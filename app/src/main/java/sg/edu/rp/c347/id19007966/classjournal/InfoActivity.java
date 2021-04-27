@@ -3,6 +3,7 @@ package sg.edu.rp.c347.id19007966.classjournal;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,6 +20,8 @@ public class InfoActivity extends AppCompatActivity {
     Button btnInfo;
     Button btnAdd;
     Button btnEmail;
+
+    int requestCode = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,13 +36,6 @@ public class InfoActivity extends AppCompatActivity {
         btnAdd = findViewById(R.id.buttonAdd);
         btnEmail = findViewById(R.id.buttonEmail);
 
-        weeks = new ArrayList<>();
-        // week 1
-        weeks.add(new Week("A"));
-        weeks.add(new Week("B")); // week 2
-        weeks.add(new Week("A")); // week 3
-
-        adapter = new InfoAdapter(this, R.layout.info_row, weeks);
         adapter = new InfoAdapter(this, R.layout.info_row, module.getWeeks());
 
         listView.setAdapter(adapter);
@@ -72,5 +68,14 @@ public class InfoActivity extends AppCompatActivity {
                         "Choose an Email client :"));
 
             }});
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(InfoActivity.this, AddNewGrade.class);
+                //i.putExtra("week", Module.size());
+                startActivityForResult(i, requestCode);
+            }
+        });
     }
 }
