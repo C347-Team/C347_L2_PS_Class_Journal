@@ -59,6 +59,16 @@ public class InfoActivity extends AppCompatActivity {
                 // Put essentials like email address, subject & body text
                 email.putExtra(Intent.EXTRA_EMAIL,
                         new String[]{"jason_lim@rp.edu.sg"});
+
+                String contents = "Hi faci,\n\n";
+                contents += "I am ...\n";
+                contents += "Please see my remarks so far, thank you!\n\n";
+                for (int i = 0; i < module.getWeeks().size(); i++) {
+                    contents += "Week " + (i+1) + ": DG: " + module.getWeeks().get(i).getGrade() + "\n";
+                }
+                email.putExtra(Intent.EXTRA_TEXT, contents);
+
+                //email.putExtra(Intent.EXTRA_TEXT,
                 // This MIME type indicates email
                 email.setType("message/rfc822");
                 // createChooser shows user a list of app that can handle
