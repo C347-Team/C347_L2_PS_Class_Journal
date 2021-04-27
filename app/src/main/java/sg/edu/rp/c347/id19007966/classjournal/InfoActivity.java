@@ -16,6 +16,7 @@ public class InfoActivity extends AppCompatActivity {
 
     ListView listView;
     ArrayAdapter adapter;
+    Module module;
 
     Button btnInfo;
     Button btnAdd;
@@ -28,7 +29,7 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
 
         Intent intent = getIntent();
-        Module module = (Module) intent.getSerializableExtra("module");
+        module = (Module) intent.getSerializableExtra("module");
 
         listView = findViewById(R.id.infoList);
 
@@ -83,9 +84,30 @@ public class InfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(InfoActivity.this, AddNewGrade.class);
-                //i.putExtra("week", Module.size());
+                i.putExtra("week", module.getWeeks().size());
                 startActivityForResult(i, requestCode);
             }
         });
+
+
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Only handle when 2nd activity closed normally
+        //  and data contains something
+        if(resultCode == RESULT_OK){
+            if (data != null) {
+                // Get data passed back from 2nd activity
+                String grade = data.getStringExtra("grade");
+                Week week = new Week(grade);
+                module.getWeeks().add(week);
+                adapter.notifyDataSetChanged();
+            }
+        }
+    }
+
+
 }
