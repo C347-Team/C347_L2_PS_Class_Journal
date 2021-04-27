@@ -37,8 +37,10 @@ public class MainActivity extends AppCompatActivity {
         c347Weeks.add(new Week("A")); // week 1
         c347Weeks.add(new Week("A")); // week 2
 
-        modules.add(new Module("C349", "iPad Programming", c349Weeks));
-        modules.add(new Module("C347", "Android Programming", c347Weeks));
+        modules.add(new Module("C349", "iPad Programming", c349Weeks,
+                "https://web.archive.org/web/20170707141925/http://rp.edu.sg/Module_Synopses/C349_iPad_Programming.aspx"));
+        modules.add(new Module("C347", "Android Programming", c347Weeks,
+                "https://web.archive.org/web/20170707191742/http://rp.edu.sg/Module_Synopses/C347_Android_Programming_II.aspx"));
 
         // Link this Activity object, the row.xml layout for
         //  each row and the module String array together

@@ -46,7 +46,7 @@ public class InfoActivity extends AppCompatActivity {
                 // Intent to display data
                 Intent rpIntent = new Intent(Intent.ACTION_VIEW);
                 // Set the URL to be used.
-                rpIntent.setData(Uri.parse("https://www.rp.edu.sg/soi/full-time-diplomas/details/diploma-in-digital-design-and-development"));
+                rpIntent.setData(Uri.parse(module.getUrl()));
                 startActivity(rpIntent);
             }
         });
@@ -60,6 +60,16 @@ public class InfoActivity extends AppCompatActivity {
                 // Put essentials like email address, subject & body text
                 email.putExtra(Intent.EXTRA_EMAIL,
                         new String[]{"jason_lim@rp.edu.sg"});
+
+                String contents = "Hi faci,\n\n";
+                contents += "I am ...\n";
+                contents += "Please see my remarks so far, thank you!\n\n";
+                for (int i = 0; i < module.getWeeks().size(); i++) {
+                    contents += "Week " + (i+1) + ": DG: " + module.getWeeks().get(i).getGrade() + "\n";
+                }
+                email.putExtra(Intent.EXTRA_TEXT, contents);
+
+                //email.putExtra(Intent.EXTRA_TEXT,
                 // This MIME type indicates email
                 email.setType("message/rfc822");
                 // createChooser shows user a list of app that can handle
