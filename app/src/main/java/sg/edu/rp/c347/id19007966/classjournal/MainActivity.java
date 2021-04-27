@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     ListView lv;
     ArrayAdapter aa;
-    ArrayList<Module> module;
+    ArrayList<Module> modules;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,20 +25,31 @@ public class MainActivity extends AppCompatActivity {
 
         lv = (ListView) this.findViewById(R.id.lvMain);
 
-        module = new ArrayList<Module>();
-        module.add(new Module("C349", "Ipad Programming"));
-        module.add(new Module("C347", "Android Programming"));
+        modules = new ArrayList<Module>();
+        ArrayList<Week> c349Weeks = new ArrayList<>();
+
+        c349Weeks.add(new Week("A")); // week 1
+        c349Weeks.add(new Week("B")); // week 2
+        c349Weeks.add(new Week("A")); // week 3
+
+        ArrayList<Week> c347Weeks = new ArrayList<>();
+
+        c347Weeks.add(new Week("A")); // week 1
+        c347Weeks.add(new Week("A")); // week 2
+
+        modules.add(new Module("C349", "iPad Programming", c349Weeks));
+        modules.add(new Module("C347", "Android Programming", c347Weeks));
 
         // Link this Activity object, the row.xml layout for
         //  each row and the module String array together
-        aa = new MainAdapter(this, R.layout.row, module);
+        aa = new MainAdapter(this, R.layout.row, modules);
         lv.setAdapter(aa);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(MainActivity.this, InfoActivity.class);
-                intent.putExtra("module", module.get(i));
+                intent.putExtra("module", modules.get(i));
                 startActivity(intent);
             }
         });
